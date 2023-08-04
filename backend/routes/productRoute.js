@@ -5,6 +5,7 @@ const router = express.Router()
 
 router.get('/products', asyncHandler(async (req, res) => {
     const products = await Product.find()
+    // throw new Error("Some thing went worng")
     res.json(products)
 
 }));

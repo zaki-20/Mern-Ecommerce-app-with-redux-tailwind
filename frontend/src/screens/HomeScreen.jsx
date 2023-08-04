@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import ProductScreen from './ProductScreen'
 import { listProducts } from "../actions/productActions"
 import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../shared/Loader';
+import Message from '../shared/Message';
 
 const HomeScreen = () => {
 
@@ -18,18 +20,9 @@ const HomeScreen = () => {
     <div >
 
       {
-        loading ? <div className='flex justify-center items-center h-screen'>
-          <div
-          class="inline-block h-12 text-white font-bold w-12 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status">
-          <span
-            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-          >Loading...</span
-          >
-        </div>
-        </div>
+        loading ? <Loader />
 
-          : error ? <h2>{error}</h2> : <>
+          : error ? <div className='my-4 max-w-[1240px] mx-auto' ><Message>{error}</Message></div> : <>
             <div className='font-bold text-3xl text-center mt-10 text-white'>
               <h1>Featured Products</h1>
             </div>
