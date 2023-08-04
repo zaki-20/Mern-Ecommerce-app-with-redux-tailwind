@@ -1,0 +1,42 @@
+/* styles.css */
+
+/* Define the button styles */
+.button {
+    width: 100%;
+    color: white;
+    border: 0;
+    padding: 0.5rem 1.5rem;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    background: linear-gradient(to right, var(--from-color), var(--to-color));
+    transition: transform 0.5s;
+}
+
+/* Define the default gradient background */
+.button {
+    --from-color: #0074D9;
+    --to-color: #B10DC9;
+}
+
+/* Define the hover gradient background using animation */
+@keyframes hover-gradient {
+    from {
+        background: linear-gradient(to right, var(--from-color), var(--to-color));
+    }
+    to {
+        background: linear-gradient(to right, var(--to-color), var(--from-color));
+    }
+}
+
+/* Apply the hover animation on hover */
+.button:hover {
+    animation: hover-gradient 0.5s;
+    transform: scale(1.05);
+}
+
+/* Optional: Define transition delay for background on normal state */
+.button:not(:hover) {
+    transition-delay: 0.5s; /* This creates a delay for background transition when not hovering */
+}
