@@ -25,7 +25,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link to="/signin">
+          <Link to="/login">
             <div className="text-sm text-gray-400 hover:text-white ease-in duration-100 cursor-pointer flex" >
               <span className="">
                 <AiOutlineUser size={20} />
