@@ -1,8 +1,12 @@
 
 const express = require('express');
-const { authController, getUserPrfile } = require('../controllers/usersController');
+const { authController, getUserPrfile, registerUser } = require('../controllers/usersController');
 const {protect} = require("../middlewares/authMiddleware")
 const router = express.Router()
+
+
+//user registration
+router.route('/').post(registerUser)
 
 
 //get route for all products

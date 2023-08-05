@@ -2,6 +2,30 @@ const User = require('../models/UserModel')
 const asyncHandler = require('express-async-handler')
 const generateToken = require("../utils/generateToken")
 
+
+//controller for registration
+const registerUser = asyncHandler( async(req, res) => {
+    const {name, email, password} = req.body;
+    const userExist = await User.findOne({email})
+
+    if(userExist){
+        res.status(409);
+        throw new Error("user already exist")
+    }
+    const user = await User.create({name, email, password})
+
+    if(user){
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            token: generateToken(user._id)
+        })
+    }
+})
+
+
 const authController = asyncHandler(async (req, res) => {
     const { email, password } = req.body
     const user = await User.findOne({ email })
@@ -20,6 +44,7 @@ const authController = asyncHandler(async (req, res) => {
     }
 })
 
+
 const getUserPrfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.body._id)
     if (user) {
@@ -37,4 +62,4 @@ const getUserPrfile = asyncHandler(async (req, res) => {
 })
 
 
-module.exports = { authController, getUserPrfile }
+module.exports = { authController, getUserPrfile, registerUser }
