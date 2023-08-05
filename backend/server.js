@@ -5,8 +5,12 @@ const dotenv = require('dotenv')
 const Products = require('./data/Product')
 const coonectDB = require('./config/config')
 const productRoute = require('./routes/productRoute')
+const userRoute = require('./routes/userRoute')
 
 const app = express()
+
+//middleware for body-parser
+app.use(express.json())
 
 
 //dotenv && connection
@@ -16,6 +20,7 @@ coonectDB();
 
 //rourtes
 app.use('/api', productRoute)
+app.use('/api/users', userRoute)
 
 app.get('/', (req, res) => {
     res.send("welcome to Server")
