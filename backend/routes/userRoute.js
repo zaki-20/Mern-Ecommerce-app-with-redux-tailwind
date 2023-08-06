@@ -1,7 +1,7 @@
 
 const express = require('express');
-const { authController, getUserPrfile, registerUser } = require('../controllers/usersController');
-const {protect} = require("../middlewares/authMiddleware")
+const { authController, getUserPrfile, registerUser, updateUserProfile } = require('../controllers/usersController');
+const { protect } = require("../middlewares/authMiddleware")
 const router = express.Router()
 
 
@@ -13,7 +13,9 @@ router.route('/').post(registerUser)
 router.route('/login').post(authController)
 
 //get user profile private route
-router.route('/profile').get(protect, getUserPrfile)
+router.route('/profile')
+    .get(protect, getUserPrfile)
+    .put(protect, updateUserProfile)
 
 //get route for product
 // router.route('/products/:id').get(getProduct)

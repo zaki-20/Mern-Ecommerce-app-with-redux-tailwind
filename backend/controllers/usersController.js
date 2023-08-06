@@ -25,6 +25,29 @@ const registerUser = asyncHandler( async(req, res) => {
     }
 })
 
+//update user controller
+const updateUserProfile = asyncHandler(async(req, res)=> {
+    const user = await User.findById(req.user._id)
+    if(user){
+        user.name = req.body.name || user.name
+        user.email = req.body.email || user.email
+        if(req.body.password){
+            user.password = req.body.password
+        }
+        const userUpdate = await user.save()
+        res.json({
+            _id: userUpdate._id,
+            name: userUpdate.name,
+            email: userUpdate.email,
+            isAdmin: userUpdate.isAdmin,
+            token: generateToken(userUpdate._id)
+        })
+    }else{
+        res.status(404)
+        throw new Error("user not found..")
+    }
+})
+
 
 const authController = asyncHandler(async (req, res) => {
     const { email, password } = req.body
@@ -62,4 +85,4 @@ const getUserPrfile = asyncHandler(async (req, res) => {
 })
 
 
-module.exports = { authController, getUserPrfile, registerUser }
+module.exports = { authController, getUserPrfile, registerUser, updateUserProfile }

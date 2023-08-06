@@ -34,9 +34,9 @@ const RegisterScreen = () => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        if(password !== confirmPassword){
-            setMessage("password do not match")
-        }else{
+        if (password !== confirmPassword) {
+            setMessage("  password do not match")
+        } else {
             dispatch(register(name, email, password))
         }
     }
@@ -53,7 +53,7 @@ const RegisterScreen = () => {
                         </div>
 
                         {loading && <Loader />}
-                        {error && <Message>{message}</Message>}
+                        {message && <div className="w-1/2 mx-auto mt-4"> <Message>{message}</Message></div>}
                         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                             <form class="space-y-6" onSubmit={submitHandler}>
                                 <div>
@@ -93,7 +93,7 @@ const RegisterScreen = () => {
                                     <div class="flex items-center justify-between">
 
                                         <label for="cpassword" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                                       
+
                                     </div>
                                     <div class="mt-2">
                                         {/* password input */}
@@ -103,7 +103,7 @@ const RegisterScreen = () => {
                                 </div>
 
                                 <div>
-                                    <button  type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
+                                    <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
                                 </div>
                             </form>
 
