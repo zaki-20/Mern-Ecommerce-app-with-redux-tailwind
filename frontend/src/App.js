@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import ProductDetail from "./screens/ProductDetail";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 
 function App() {
@@ -13,10 +14,11 @@ function App() {
 
       <NavBar />
       <Routes>
-        <Route path="/login" element={<LoginScreen />} />
         <Route path="/" exact element={<HomeScreen />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/cart/:id?" element={<CartScreen />} />
+        <Route path="/register"  element={<RegisterScreen />} />
+        <Route path="/login"  element={<LoginScreen />} />
+        <Route path="/product/:id"  element={<ProductDetail />} />
+        <Route path="/cart/:id?"  element={<CartScreen />} />
 
       </Routes>
 
