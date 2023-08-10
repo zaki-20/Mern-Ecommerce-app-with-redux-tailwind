@@ -9,7 +9,7 @@ const registerUser = asyncHandler( async(req, res) => {
     const userExist = await User.findOne({email})
 
     if(userExist){
-        res.status(409);
+        res.status(401);
         throw new Error("user already exist")
     }
     const user = await User.create({name, email, password})
@@ -69,7 +69,7 @@ const authController = asyncHandler(async (req, res) => {
 
 
 const getUserPrfile = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.body._id)
+    const user = await User.findById(req.user._id)
     if (user) {
         res.json({
             _id: user._id,

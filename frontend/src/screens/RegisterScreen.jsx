@@ -109,7 +109,7 @@ const RegisterScreen = () => {
 
                             <p class="mt-10 text-center text-sm text-gray-500">
                                 already have an accont?
-                                <Link to={`/login`} class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign In</Link>
+                                <Link to={redirect ?`/login?redirect=${redirect}`:"/login"} class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign In</Link>
                             </p>
                         </div>
                     </div>

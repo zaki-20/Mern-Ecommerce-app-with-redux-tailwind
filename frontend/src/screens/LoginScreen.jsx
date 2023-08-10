@@ -24,7 +24,7 @@ const LoginScreen = () => {
         if (userInfo) {
             navigate(redirect)
         }
-    }, [redirect, navigate, userInfo])
+    }, [redirect, userInfo])
 
 
 
@@ -79,7 +79,7 @@ const LoginScreen = () => {
 
                             <p class="mt-10 text-center text-sm text-gray-500">
                                 don't have an accont?
-                                <Link to={"/register"} class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign up</Link>
+                                <Link to={redirect ? `/register?redirect=${redirect}` : "/register"} class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign up</Link>
                             </p>
                         </div>
                     </div>
